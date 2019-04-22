@@ -1,14 +1,7 @@
-// Steps to complete:
-
-//TODO: Make seconds count
-//displays current time
-
-// 1. Initialize Firebase
-// 2. Create button for adding new employees - then update the html + update the database
-// 3. Create a way to retrieve employees from the employee database.
-// 4. Create a way to calculate the months worked. Using difference between start and current time.
-//    Then use moment.js formatting to set difference in months.
-// 5. Calculate Total billed
+//TODO make seconds tick on current time 
+//TODO css
+//TODO get values to show for next arrival + min away
+//clear html after reload
 
 var config = {
     apiKey: "AIzaSyAniS2axYd_0rY7PMa0dwDMsiqCUO4IAMc",
@@ -29,7 +22,7 @@ $("#add-train-btn").on("click", function(event) {
 // Grabs user input
   var trainName = $("#train-name-input").val().trim();
   var trainDest = $("#destination-input").val().trim();
-  var trainTime = moment($("#first-train-input").val().trim(), "MM/DD/YYYY").format("X");
+  var trainTime =  moment($("#first-train-input").val().trim(), "HH:mm").format("X");
   var trainFreq = $("#frequency-input").val().trim();
 
 
@@ -43,12 +36,6 @@ var newTrain = {
 
 // Uploads train data to the database
 database.ref().push(newTrain);
-
-// Logs everything to console
-  console.log(newTrain.name);
-  console.log(newTrain.destination);
-  console.log(newTrain.startTime);
-  console.log(newTrain.frequency);
 
 alert("Train successfully added");
 
@@ -80,45 +67,59 @@ database.ref().on("child_added", function(childSnapshot) {
 // fix train start time format
 var trainTimeFormat =moment.unix(trainTime).format('HH:mm');
 
-
+console.log(trainTimeFormat)
 // First Time (pushed back 1 year to make sure it comes before current time)
-// var firstTrainConverted = moment(trainTimeFormat).subtract(1, "years");
-// console.log(firstTrainConverted);
+var firstTrainConverted = moment(trainTimeFormat).subtract(1, "years");
+console.log(firstTrainConverted);
 
 // Current Time
 var currentTime = moment();
 console.log("CURRENT TIME: " + moment(currentTime).format("HH:mm"));
 
 // Difference between the times 
-var diffTime = moment().diff(moment(trainTimeFormat), "minutes");
+var diffTime = moment().diff(moment.unix(firstTrainConverted), "minutes");
 console.log("DIFFERENCE IN TIME: " + diffTime);
 
- // Time apart (remainder)
- var tRemainder = diffTime % trainFreq;
- console.log( tRemainder);
+// Time apart (remainder)
+var tRemainder = diffTime % trainFreq;
+console.log( tRemainder);
 
 var minutesLeft = trainFreq - tRemainder;
 console.log('Min left:' + minutesLeft);
+
 
 var nextTrain = minutesLeft + currentTime
 parseInt(nextTrain);
 console.log('Next train: ' + nextTrain)
 
 //show current time at the top of the page
-$('#current-time').text(moment(currentTime).format("HH:mm:ss"));
 
+//set current time at top of page
+var currentTime = document.getElementById('current-time');
+
+function time() {
+  var d = new Date();
+  var s = d.getSeconds();
+  var m = d.getMinutes();
+  var h = d.getHours();
+  currentTime.textContent = h + ":" + m + ":" + s;
+}
+
+setInterval(time, 1000);
+ 
+ 
 
 // Create the new row
 var newRow = $("<tr>").append(
-$("<td>").text(trainName),
-$("<td>").text(trainDest),
-$("<td>").text(trainFreq),
-$("<td>").text(nextTrain),
-$("<td>").text(minutesLeft),
+$("<td>").attr('scope','col').text(trainName),
+$("<td>").attr('scope','col').text(trainDest),
+$("<td>").attr('scope','col').text(trainFreq),
+$("<td>").attr('scope','col').text(nextTrain),
+$("<td>").attr('scope','col').text(minutesLeft),
 );
 
 // Append the new row to the table
 $("#train-table > tbody").append(newRow);
-});
 
 
+})
