@@ -1,0 +1,20 @@
+#employee-table th,
+td {
+  display: inline-block;
+  width: 16.575%;
+ 
+}
+
+.present-time{
+    margin: 0 auto;
+    font-size: 24px;
+    box-sizing: border-box;
+}
+
+body{
+    color:red;
+}
+
+#current-time{
+    background: red;
+}
