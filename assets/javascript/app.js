@@ -103,15 +103,21 @@ setInterval(time, 1000);
 
 // Create the new row
 var newRow = $("<tr>").append(
-$("<td>").attr('scope','col').text(trainName),
-$("<td>").attr('scope','col').text(trainDest),
-$("<td>").attr('scope','col').text(trainFreq),
-$("<td>").attr('scope','col').text(nextTrain),
-$("<td>").attr('scope','col').text(tMinutesTillTrain),
+$("<td>").text(trainName),
+$("<td>").text(trainDest),
+$("<td>").text(trainFreq),
+$("<td>").text(nextTrain),
+$("<td>").text(tMinutesTillTrain),
+$("<button>").text("Remove").addClass("remove-button")
 );
 
 // Append the new row to the table
 $("#train-table > tbody").append(newRow);
 
+
+//allow user to delete trains
+$('.remove-button').on('click', function(event){
+  $(this).closest('tr').remove()
+})
 
 })
