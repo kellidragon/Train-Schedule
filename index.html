@@ -11,6 +11,12 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
+  <!-- Bootstrap core CSS -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Material Design Bootstrap -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.7.7/css/mdb.min.css" rel="stylesheet">
 
   <!-- Firebase Reference -->
   <script src="https://www.gstatic.com/firebasejs/4.12.0/firebase.js"></script>
@@ -33,13 +39,11 @@
 
     <!-- Jumbotron -->
     <div class="jumbotron">
-      <!-- <img src="./assets/images/baytransit.png" id="hero"> -->
-      <h3 class="text-center">A Directory of All Trains in the Bay Area</h3>
     </div>
     <div class="container">
     <div class="row present-time">
          <div class="col-md-12">
-                <div style="text-align: center; font-size:40px;" id="current-time"> </div>
+                <div class="animated slideInLeft slow"style="text-align: center; font-size:40px;" id="current-time"> </div>
         </div>
     </div>    
 
@@ -48,7 +52,7 @@
       <div class="col-md-12">
 
         <!-- Current Train-->
-        <div class="card mb-4">
+        <div class="card mb-4 animated swing slow">
           <div class="card-header" >Current Train Schedule</div>
           <div class="card-body">
             <table class="table table-sm table-hover" id='train-table'>
@@ -72,7 +76,7 @@
     <div class="row">
       <div class="col-md-12">
         <!-- Add Train  -->
-        <div class="card mb-4">
+        <div class="card mb-4 animated swing slow">
           <div class="card-header">Add Train</div>
           <div class="card-body">
 
@@ -105,6 +109,14 @@
   </div>
 
   <!-- JavaScript -->
+  <!-- JQuery -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<!-- Bootstrap tooltips -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
+<!-- Bootstrap core JavaScript -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<!-- MDB core JavaScript -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.7.7/js/mdb.min.js"></script>
   <script src="assets/javascript/app.js"></script>
 
 </body>

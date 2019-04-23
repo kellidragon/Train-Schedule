@@ -6,7 +6,7 @@
 .jumbotron{
     color: white;
     border-radius: 0;
-    padding: 200px;
+    padding: 250px;
     background-image: url("../images/baytransit.png");
     background-size: cover;
 }
@@ -19,9 +19,14 @@ h3{
     color: #EF8354;
     font-size: 20px;
     font-family: 'Quicksand', sans-serif;
-   
 }
 
+.card-body {
+    background-color: #E8E8E8;
+}
+body{
+    background-color:#ffff;
+}
 #current-time{
  color:#EF8354;
 }

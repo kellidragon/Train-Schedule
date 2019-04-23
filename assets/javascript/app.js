@@ -65,32 +65,26 @@ database.ref().on("child_added", function(childSnapshot) {
 // fix train start time format
 var trainTimeFormat =moment.unix(trainTime).format('HH:mm');
 
-console.log(trainTimeFormat)
+
 // First Time (pushed back 1 year to make sure it comes before current time)
-var firstTrainConverted = moment(trainTimeFormat).subtract(1, "years");
-console.log(firstTrainConverted);
+var firstTimeConverted = moment(trainTimeFormat, "HH:mm").subtract(1, "years");
+
 
 // Current Time
 var currentTime = moment();
-console.log("CURRENT TIME: " + moment(currentTime).format("HH:mm"));
 
 // Difference between the times 
-var diffTime = moment().diff(moment.unix(firstTrainConverted), "minutes");
-console.log("DIFFERENCE IN TIME: " + diffTime);
+var diffTime = moment().diff(moment(firstTimeConverted), "minutes");
 
 // Time apart (remainder)
 var tRemainder = diffTime % trainFreq;
-console.log( tRemainder);
+    console.log(tRemainder);
 
-var minutesLeft = trainFreq - tRemainder;
-console.log('Min left:' + minutesLeft);
+//minutes until next train
+var tMinutesTillTrain = trainFreq - tRemainder;
 
-
-var nextTrain = minutesLeft + currentTime
-parseInt(nextTrain);
-console.log('Next train: ' + nextTrain)
-
-//show current time at the top of the page
+//time next train will arrive
+var nextTrain = moment().add(tMinutesTillTrain, "minutes");
 
 //set current time at top of page
 var currentTime = document.getElementById('current-time');
@@ -113,7 +107,7 @@ $("<td>").attr('scope','col').text(trainName),
 $("<td>").attr('scope','col').text(trainDest),
 $("<td>").attr('scope','col').text(trainFreq),
 $("<td>").attr('scope','col').text(nextTrain),
-$("<td>").attr('scope','col').text(minutesLeft),
+$("<td>").attr('scope','col').text(tMinutesTillTrain),
 );
 
 // Append the new row to the table
