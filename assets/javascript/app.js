@@ -1,7 +1,5 @@
-//TODO make seconds tick on current time 
-//TODO css
+
 //TODO get values to show for next arrival + min away
-//clear html after reload
 
 var config = {
     apiKey: "AIzaSyAniS2axYd_0rY7PMa0dwDMsiqCUO4IAMc",
