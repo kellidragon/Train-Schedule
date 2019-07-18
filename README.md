@@ -1,6 +1,7 @@
 # Train-Schedule
 https://kellidragon.github.io/Train-Schedule/
-Project Overview:
+
+## Project Overview:##
 Train schedule application that incorporates Firebase to host arrival and departure data. This app will retrieve and manipulate information with Moment.js, as well as provide up-to-date information about various trains, namely their arrival times and how many minutes remain until they arrive at their station.
 
 Technologies used:
